@@ -1,0 +1,24 @@
+:root{
+	scrollbar-width: thin !important;
+	scrollbar-color: black #14141499 !important;
+}
+
+@-moz-document url(about:privatebrowsing) {
+	:root{
+		scrollbar-width: thin !important;
+		scrollbar-color: black #14141499 !important;
+	}
+}
+
+@-moz-document url("about:newtab"),
+url("about:blank") {
+    /* Change background */
+    body {
+        background-image: url("cat_wallpaper.png");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position-x: center;
+        background-position-y: bottom;
+    }
+}
