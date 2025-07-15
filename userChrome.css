@@ -281,7 +281,21 @@ toolbar
   padding: 0 !important;
   height: 32px !important;
 }
+#urlbar-go-button {
+  display: none !important;
+}
 #identity-box {
+  /* display: none; */
+  margin-right: -2px !important;
+}
+#identity-permission-box {
+  margin-left: 3px !important;
+  margin-right: -3px !important;
+}
+#tracking-protection-icon-container {
+  margin-right: -3px !important;
+}
+#identity-icon-box {
   display: none;
 }
 
@@ -495,3 +509,20 @@ You can choose between:
 }
 
 #alltabs-button { display: none !important; }
+
+#urlbar-searchmode-switcher {
+  display: none !important;
+}
+
+#pageAction-urlbar-_testpilot-containers {
+  display: none !important;
+}
+
+#star-button-box {
+  margin-left: -4px;
+}
+
+.toolbar .toolbarbutton-1 {
+  margin-bottom: 2px !important;
+  width: 32px !important;
+}
