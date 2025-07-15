@@ -1,0 +1,111 @@
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/For you/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/People also watched/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/People also search for/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Previously watched/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Explore more/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Related to your search/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/From related searches/i))
+www.youtube.com##ytd-shelf-renderer.style-scope:has(span:has-text(/Channels new to you/i))
+www.youtube.com##ytd-horizontal-card-list-renderer.ytd-item-section-renderer.style-scope
+
+www.youtube.com##ytd-reel-shelf-renderer.ytd-item-section-renderer.style-scope
+
+! YT Homepage and Subscriptions (Grid View) - Hide the Shorts section
+youtube.com##[is-shorts]
+! YT Menu - Hide the Shorts button
+www.youtube.com###guide [title="Shorts"], .ytd-mini-guide-entry-renderer[title="Shorts"]
+! YT Search - Hide Shorts
+www.youtube.com##ytd-search ytd-video-renderer:has([overlay-style="SHORTS"])
+! YT Search, Channels, Subscriptions (List View) and Sidebar/Below Player Recommendations - Hide the Shorts sections
+www.youtube.com##ytd-reel-shelf-renderer
+! YT Channels - Hide the Shorts tab
+www.youtube.com##[tab-title="Shorts"]
+! YT Subscriptions - Hide Shorts - Grid View
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-grid-video-renderer:has([overlay-style="SHORTS"])
+! YT Subscriptions - Hide Shorts - List View
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-video-renderer:has([overlay-style="SHORTS"])
+! YT Subscriptions - New Layout - Hide Shorts
+www.youtube.com##ytd-browse[page-subtype="subscriptions"] ytd-rich-item-renderer:has([overlay-style="SHORTS"])
+! YT Sidebar - Hide Shorts
+www.youtube.com###related ytd-compact-video-renderer:has([overlay-style="SHORTS"])
+
+! YT Mobile - Hide the Shorts Menu button
+m.youtube.com##ytm-pivot-bar-item-renderer:has(>.pivot-shorts)
+! YT Mobile - Hide the Shorts sections
+m.youtube.com##ytm-reel-shelf-renderer
+m.youtube.com##ytm-rich-section-renderer:has([d^="M17.77,10.32l-1.2"])
+! YT Mobile - Hide Shorts in search results
+m.youtube.com##ytm-search ytm-video-with-context-renderer:has([data-style="SHORTS"])
+! YT Mobile - Hide the Shorts button on Channels
+m.youtube.com##[tab-title="Shorts"]
+
+! YT Live Videos
+www.youtube.com##:is(ytd-rich-item-renderer,ytd-grid-video-renderer,ytd-compact-video-renderer):has(.badge-style-type-live-now-alternate)
+! YT Streamed
+www.youtube.com##:is(ytd-rich-item-renderer,ytd-grid-video-renderer,ytd-compact-video-renderer):has([aria-label~="Streamed"])
+
+! YT Home - Hide Videos Below 1K Views
+www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
+! YT Sidebar - Hide Videos Below 1K Views
+www.youtube.com##ytd-compact-video-renderer:has(#video-title:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"])))
+! YT Player End Cards - Hide Videos Below 1K Views
+www.youtube.com##.ytp-videowall-still:not(:is([aria-label*=",0"],[aria-label*=",1"],[aria-label*=",2"],[aria-label*=",3"],[aria-label*=",4"],[aria-label*=",5"],[aria-label*=",6"],[aria-label*=",7"],[aria-label*=",8"],[aria-label*=",9"]))
+
+! YT Home - Hide videos based on channel names
+youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer:has(#avatar-link:is([title="Full Channel Name"], [title*="Partial Channel Name"], [title="Case Insensitive Channel Name"i]))
+! YT Home - Hide videos based on their titles
+youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer:has(#video-title-link:is([title*="Partial Match"], [title*="Case-Insensitive Partial Match"i], [title~="Space-separated-aka-Whole-word-match"]))
+! YT Sidebar - Hide videos based on channel names
+youtube.com###related ytd-compact-video-renderer:has(#video-title:is([aria-label*="by Partial or Full Channel name"], [aria-label*="by Case-insensitive Partial or full Channel name"i]))
+! YT Sidebar - Hide videos based on their titles
+youtube.com###related ytd-compact-video-renderer:has(#video-title:is([title*="Partial Match"], [title*="Case-Insensitive Partial Match"i], [title~="Space-separated-aka-Whole-word-match"]))
+! Mobile YT - Hide videos based on channel URLs
+m.youtube.com##ytm-media-item .media-channel a:not([class]):is([href="/@ChannelURL"], [href="/@AnotherChannelURL"]):upward(ytm-media-item)
+! YT Home - No Videos
+! www.youtube.com##ytd-browse[page-subtype="home"]
+! YT Home - Limit rows
+! youtube.com##ytd-browse[page-subtype="home"] ytd-rich-grid-renderer>#contents>:is(ytd-rich-item-renderer[is-in-first-column]:first-child~[is-in-first-column]~[is-in-first-column],ytd-rich-item-renderer[is-in-first-column]:first-child~[is-in-first-column]~[is-in-first-column]~*)
+! YT Videos - No Sidebar
+!www.youtube.com##ytd-watch-flexy #secondary
+! YT Videos - Sidebar Without Recommendations
+www.youtube.com##ytd-watch-flexy #related
+
+! YT Homepage - Hide the Posts Section
+www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer:has(ytd-rich-item-renderer[is-post])
+! YT Homepage - Hide Posts
+www.youtube.com##ytd-browse[page-subtype="home"] ytd-rich-item-renderer[is-post]
+
+! Recommend after pause
+youtube-nocookie.com,youtube.com##.ytp-pause-overlay, .show-video-thumbnail-button
+~youtube-nocookie.com,~youtube.com##iframe ~ #topvbar > #rvid
+
+! YT Search - keep only videos (no shorts)
+youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+
+! YT Search - keep only videos (no shorts) and channels
+youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,ytd-channel-renderer,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+
+! YT Search - keep only videos (no shorts), channels and playlists
+youtube.com##ytd-search ytd-item-section-renderer>#contents>:is(:not(ytd-video-renderer,ytd-channel-renderer,ytd-playlist-renderer,yt-lockup-view-model,yt-showing-results-for-renderer,[icon-name="promo-full-height:EMPTY_SEARCH"]),ytd-video-renderer:has([aria-label="Shorts"])),ytd-secondary-search-container-renderer
+
+! Move homepage placeholders to the end
+www.youtube.com##ytd-browse[page-subtype="home"] :is(ytd-rich-grid-row, #contents.ytd-rich-grid-row):style(display: contents !important)
+
+! Self promotion dialogs in bottom left corner ("Join Now")
+!youtube.com##ytd-popup-container > tp-yt-paper-dialog > ytd-mealbar-promo-renderer, ytd-popup-container > tp-yt-paper-dialog > yt-mealbar-promo-renderer:has-text(/Claim Offer|Join now|Not Now|No thanks|YouTube TV|live TV|Live TV|movies|sports|Try it free|unlimited DVR|watch NFL/)
+
+! YT Home - Hide Sections
+youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
+
+! Reddit
+reddit.com##.left-sidebar
+reddit.com##.legal-links
+reddit.com##.right-sidebar faceplate-tracker
+
+! Reddit - Top posts
+reddit.com##.right-sidebar .px-md
+
+! Block reddit frontpage
+||reddit.com^$document
+@@||reddit.com/r^
+
