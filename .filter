@@ -109,3 +109,5 @@ reddit.com##.right-sidebar .px-md
 ||reddit.com^$document
 @@||reddit.com/r^
 
+! Google login dialogs
+||accounts.google.com/gsi/*$xhr,script,3p
