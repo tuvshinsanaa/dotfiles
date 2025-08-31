@@ -111,3 +111,8 @@ reddit.com##.right-sidebar .px-md
 
 ! Google login dialogs
 ||accounts.google.com/gsi/*$xhr,script,3p
+
+! Hide HLTV sections
+hltv.org##.right2Col
+hltv.org##.rightCol
+
