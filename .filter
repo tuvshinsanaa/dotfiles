@@ -105,6 +105,9 @@ reddit.com##.right-sidebar faceplate-tracker
 ! Reddit - Top posts
 reddit.com##.right-sidebar .px-md
 
+! Reddit - Subreddit suggestion
+reddit.com##rpl-horizontal-scroller[slot="recommendations"]
+
 ! Block reddit frontpage
 ||reddit.com^$document
 @@||reddit.com/r^
