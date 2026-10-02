@@ -1,8 +1,4 @@
 /* userChrome.css — compatibility update for Firefox 157.
- * Replace the previous stylesheet; do not append this whole file to it.
- * Keeps the original palette, custom URL-bar placement and hidden controls.
- * Markdown formatting from the attachment has been converted to plain CSS.
- * Updated against Mozilla source; not visually tested in Firefox 157.
  */
 :root {
   --base_color1: #1c1b21;
