@@ -285,8 +285,10 @@ toolbar
 }
 
 :is(#urlbar-input-container, .urlbar-input-container) {
-  padding: 0 !important;
-  height: 32px !important;
+  box-sizing: border-box !important;
+  padding: 2px !important;
+  height: auto !important;
+  min-height: 28px !important;
 }
 
 #urlbar-go-button {
@@ -314,9 +316,10 @@ toolbar
 /* Make urlbar input and megabar consistent */
 #urlbar[breakout][breakout-extend] > :is(#urlbar-input-container, .urlbar-input-container),
 #urlbar[breakout][breakout-extend] > .urlbar-input-container {
-  height: var(--urlbar-height) !important;
-  padding-block: 0 !important;
-  padding-inline: var(--urlbar-container-padding) !important;
+  box-sizing: border-box !important;
+  height: auto !important;
+  min-height: 28px !important;
+  padding: 2px !important;
 }
 
 /* Blank the placeholder text in the search bar */
@@ -331,7 +334,7 @@ toolbar
 
 .urlbar-input-box {
   text-align: left !important;
-  padding: 0 8px !important;
+  padding: 0 4px !important;
 }
 
 /*C U S T O M  - S E C T I O N
@@ -349,8 +352,10 @@ You can choose between:
 
 /* Open address bar uses the same dark surface as the closed bar. */
 
-.urlbarView {
-  margin-inline: 0 !important;
+/* Match the dropdown edges to the expanded address-bar background.
+   Keep native content-driven sizing; do not stretch the dropdown. */
+#urlbar .urlbarView {
+  margin-inline: -4px !important;
   width: auto !important;
 }
 
@@ -617,3 +622,30 @@ You can choose between:
    The .tabbrowser-tabs opacity rule was not changed to #tabbrowser-tabs:
    doing that would unexpectedly hide all tabs on builds where it was inert.
  */
+
+/* Address-bar spacing: the same inset when idle, focused or expanded. */
+#urlbar {
+  --urlbar-container-padding: 2px !important;
+}
+
+#urlbar .urlbar-input-container {
+  box-sizing: border-box !important;
+  padding: 2px !important;
+  height: auto !important;
+  min-height: 28px !important;
+}
+
+/* Small, equal padding around the container badge contents. */
+#urlbar #userContext-icons {
+  padding: 3px !important;
+  align-self: center !important;
+}
+
+#urlbar #userContext-label {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#urlbar #userContext-indicator {
+  margin-inline: 0 !important;
+}
