@@ -1,24 +1,27 @@
+/* userChrome.css — compatibility update for Firefox 157.
+ * Replace the previous stylesheet; do not append this whole file to it.
+ * Keeps the original palette, custom URL-bar placement and hidden controls.
+ * Markdown formatting from the attachment has been converted to plain CSS.
+ * Updated against Mozilla source; not visually tested in Firefox 157.
+ */
 :root {
   --base_color1: #1c1b21;
   --base_color2: #33313c;
   --base_color3: #4b4757;
   --base_color4: linear-gradient(
     90deg,
-    rgba(22, 25, 37, 1) 0%,
-    rgba(148, 187, 233, 1) 100%
+rgba(22, 25, 37, 1) 0%,
+rgba(148, 187, 233, 1) 100%
   );
-
   --outer_color1: #9059ff;
   --outer_color2: #adabb9;
   --outer_color3: #e1e0e6;
-
   --orbit_color: #9795a3;
-  /* 55 */
+/* 55 */
   --bg: rgba(20, 20, 20, 0.55);
   --bgDark: rgba(20, 20, 20, 0.8);
-  /* 0.8 */
-
-  /* #14141499 */
+/* 0.8 */
+/* #14141499 */
 }
 
 /* Window transparency: */
@@ -31,7 +34,7 @@ window,
 #navigator-toolbox,
 #sidebar-box {
   background-color: var(--base_color1) !important;
-  -moz-appearance: none !important;
+-moz-appearance: none !important;
   background-image: none !important;
   border: none !important;
 }
@@ -41,7 +44,7 @@ window,
   background-color: white !important;
   list-style-image: none !important;
   transition: background-color linear 100ms !important;
-  /* --lwt-accent-color : var(--bg) !important; */
+/* --lwt-accent-color : var(--bg) !important; */
 }
 
 #navigator-toolbox {
@@ -50,12 +53,9 @@ window,
 
 window,
 #nav-bar {
-  background-color: var(--base_color4) !important;
-
-  -moz-appearance: none !important;
-
+  background: var(--base_color4) !important;
+-moz-appearance: none !important;
   background-image: none !important;
-
   box-shadow: none !important;
 }
 
@@ -68,15 +68,16 @@ window,
 :root {
   --tabs-border: transparent !important;
 }
+
 .tab-background {
   border: none !important;
 }
 
 .tab-background[selected="true"] {
-  -moz-appearance: none !important;
-
+-moz-appearance: none !important;
   background-image: none !important;
 }
+
 .tabbrowser-tabs {
   border: none !important;
   opacity: 0 !important;
@@ -101,10 +102,11 @@ window,
 }
 
 /*================== TABS BAR ==================*/
-#titlebar #TabsToolbar {
+#TabsToolbar {
   padding: 0px 0px 0px 1.5px !important;
   background: var(--bg) !important;
 }
+
 .titlebar-spacer[type="pre-tabs"] {
   display: none;
 }
@@ -115,6 +117,7 @@ window,
 .tabbrowser-tab[visuallyselected]::after {
   opacity: 0 !important;
 }
+
 .tab-line {
   height: 0px !important;
 }
@@ -122,24 +125,27 @@ window,
 .tabbrowser-tab {
   margin-right: 2px !important;
 }
-.tabbrowser-tab:not([visuallyselected="true"]),
-.tabbrowser-tab:-moz-lwtheme {
+
+.tabbrowser-tab:not(:is([visuallyselected="true"], [selected])) {
   color: white !important;
 }
 
 .tabbrowser-tab > .tab-stack > .tab-background {
   border-radius: 3px !important;
 }
-.tabbrowser-tab > .tab-stack > .tab-background:not([selected="true"]) {
-  background-color: none !important;
+
+.tabbrowser-tab:not(:is([selected], [visuallyselected="true"], [multiselected])) > .tab-stack > .tab-background {
+  background-color: transparent !important;
 }
-.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected="true"]) {
+
+.tabbrowser-tab:hover:not(:is([selected], [visuallyselected="true"], [multiselected])) > .tab-stack > .tab-background {
   background-color: var(--bgDark) !important;
 }
 
 tab[selected="true"] .tab-content {
-  color: var(black) !important;
+  color: var(--outer_color3) !important;
 }
+
 tab[selected="true"] .tab-background {
   background: var(--base_color4) !important;
 }
@@ -154,6 +160,7 @@ tab[selected="true"] .tab-background {
   transition: all 0.3s ease !important;
   border-radius: 3px !important;
 }
+
 .tab-close-button:hover {
   fill-opacity: 0.2 !important;
 }
@@ -163,33 +170,34 @@ toolbar
   #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active)
   > .toolbarbutton-icon,
 toolbar
-  #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :hover:active)
+  #tabs-newtab-button:not([disabled="true"]):is([open], [checked], :hover:active)
   > .toolbarbutton-icon,
 toolbar
-  #tabs-newtab-button:not([disabled="true"]):-moz-any([open], [checked], :active)
+  #tabs-newtab-button:not([disabled="true"]):is([open], [checked], :active)
   > .toolbarbutton-icon {
   transition: all 0.3s ease !important;
   fill: var(--orbit_color) !important;
   border-radius: 3px !important;
-  background-color: var(--base_color4) !important;
+  background: transparent !important;
 }
+
 toolbar
   #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active):hover
   > .toolbarbutton-icon {
-  background-color: var(--base_color4) !important;
+  background: transparent !important;
 }
 
 /* Buttons hide:*/
 #forward-button {
-  /* display: none !important; */
+/* display: none !important; */
   color: aliceblue;
 }
+
 .titlebar-spacer {
   display: none !important;
 }
 
 /* NAVBAR */
-
 /* Remove border under navbar */
 #navigator-toolbox::after {
   border-bottom: 0px !important;
@@ -205,9 +213,9 @@ toolbar
   border: none !important;
   box-shadow: none !important;
   margin-top: -1px !important;
-  border-top-width: -1px !important;
-  /* margin-bottom: -1px !important; */
-  border-bottom-width: -1px !important;
+  border-top-width: 0 !important;
+/* margin-bottom: -1px !important; */
+  border-bottom-width: 0 !important;
 }
 
 /* Sidebar */
@@ -218,7 +226,7 @@ toolbar
 }
 
 #search-box {
-  -moz-appearance: none !important;
+-moz-appearance: none !important;
   background: var(--bgDark) !important;
   border-radius: 6px !important;
 }
@@ -229,8 +237,8 @@ toolbar
 
 /* #sidebar-icon {
   display: none !important;
-} */
-
+}
+ */
 .sidebar-placesTree {
   color: #bebebe !important;
 }
@@ -254,53 +262,61 @@ toolbar
 }
 
 /* URL BAR */
-
 #urlbar[breakout] {
   margin-inline-start: 0px !important;
   width: 80% !important;
   left: 60px !important;
-  /* top: calc(
+/* top: calc(
     (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
   ) !important; */
   top: 46px !important;
 }
-#urlbar-background {
+
+:is(#urlbar-background, #urlbar .urlbar-background) {
   background: transparent !important;
   border: none !important;
   backdrop-filter: blur(20px);
 }
+
 #urlbar[breakout]:not([open]) {
   bottom: calc(
     (var(--urlbar-toolbar-height) - var(--urlbar-height)) / 2
   ) !important;
 }
-#urlbar-background {
+
+:is(#urlbar-background, #urlbar .urlbar-background) {
   animation: none !important;
 }
-#urlbar-input-container {
+
+:is(#urlbar-input-container, .urlbar-input-container) {
   padding: 0 !important;
   height: 32px !important;
 }
+
 #urlbar-go-button {
   display: none !important;
 }
+
 #identity-box {
-  /* display: none; */
+/* display: none; */
   margin-right: -2px !important;
 }
+
 #identity-permission-box {
   margin-left: 3px !important;
   margin-right: -3px !important;
 }
+
 #tracking-protection-icon-container {
   margin-right: -3px !important;
 }
+
 #identity-icon-box {
   display: none;
 }
 
 /* Make urlbar input and megabar consistent */
-#urlbar[breakout][breakout-extend] > #urlbar-input-container,
+#urlbar[breakout][breakout-extend] > :is(#urlbar-input-container, .urlbar-input-container),
 #urlbar[breakout][breakout-extend] > .urlbar-input-container {
   height: var(--urlbar-height) !important;
   padding-block: 0 !important;
@@ -313,7 +329,7 @@ toolbar
 }
 
 #urlbar *|input::placeholder {
-  /* opacity: 0 !important;  */
+/* opacity: 0 !important;  */
   text-align: left !important;
 }
 
@@ -325,32 +341,32 @@ toolbar
 /*C U S T O M  - S E C T I O N
 You can choose between:
 (Comment wich one you don't want)*/
-
 /*Don't have the urlbarview:*/
-
 /* #urlbar .urlbarView {
-	display: none !important;
- } */
-
+  display: none !important;
+ }
+ */
 /* Have the urblbarview: */
-
-#urlbar-input:focus {
+:is(#urlbar-input, #urlbar input):focus {
   color: #fff !important;
 }
-.megabar[open="true"] > #urlbar-background {
-  background: #fff !important;
-}
+
+/* Open address bar uses the same dark surface as the closed bar. */
+
 .urlbarView {
   margin-inline: 0 !important;
   width: auto !important;
 }
+
 .urlbarView-row {
   padding: 0 2px !important;
 }
+
 .urlbarView-row-inner {
   padding-inline-start: 4px !important;
 }
-#urlbar-background {
+
+:is(#urlbar-background, #urlbar .urlbar-background) {
   background: var(--base_color2) !important;
   border: none !important;
   backdrop-filter: blur(20px);
@@ -362,13 +378,13 @@ You can choose between:
 }
 
 .searchbar-textbox {
-  color: var(--bf-focus-fg) !important;
+  color: var(--bf-focus-fg, var(--outer_color3)) !important;
   font-weight: 700 !important;
 }
 
 /* Bookmark show more button xD */
 #PlacesChevron {
-  /* display: none; */
+/* display: none; */
 }
 
 #navigator-toolbox:hover {
@@ -383,12 +399,10 @@ You can choose between:
 
 #navigator-toolbox:hover #personal-bookmarks{
   width: 380px;
-} */
-
+}
+ */
 /* ANIMATIONS */
-
 /* Library, Sidebar, Navigations */
-
 #back-button .toolbarbutton-icon,
 #forward-button .toolbarbutton-icon {
   display: none;
@@ -408,8 +422,8 @@ You can choose between:
 #navigator-toolbox:hover #back-button .toolbarbutton-icon,
 #navigator-toolbox:hover #forward-button .toolbarbutton-icon,
 #navigator-toolbox:hover #reload-button .toolbarbutton-icon {
-  /* transform: rotate(360deg); */
-  /* width: 28px !important; */
+/* transform: rotate(360deg); */
+/* width: 28px !important; */
 }
 
 /* URLbar icons */
@@ -424,7 +438,7 @@ You can choose between:
 #navigator-toolbox:hover #pocket-button,
 #navigator-toolbox:hover #pageActionButton,
 #navigator-toolbox:hover #star-button {
-  /* transform: rotate(360deg); */
+/* transform: rotate(360deg); */
   width: 24px !important;
 }
 
@@ -433,7 +447,7 @@ You can choose between:
 #tracking-protection-icon-box,
 #fxa-avatar-image,
 .toolbarbutton-badge-stack .toolbarbutton-icon {
-  /* width: 0px !important; */
+/* width: 0px !important; */
   min-height: 0px !important;
   min-width: 0px !important;
   height: 16px !important;
@@ -444,8 +458,8 @@ You can choose between:
 #navigator-toolbox:hover #tracking-protection-icon-box,
 #navigator-toolbox:hover #fxa-avatar-image,
 #navigator-toolbox:hover .toolbarbutton-badge-stack .toolbarbutton-icon {
-  /* transform: rotate(360deg); */
-  /* width: 16px !important;
+/* transform: rotate(360deg); */
+/* width: 16px !important;
   min-height: 0px !important;
   min-width: 0px !important; */
 }
@@ -461,9 +475,8 @@ You can choose between:
 }
 
 /* Tabs */
-
 .tab-icon-image {
-  /* -webkit-filter: grayscale(100%);
+/* -webkit-filter: grayscale(100%);
   -webkit-transition: 0.5s ease-in-out;
   -moz-filter: grayscale(100%);
   -moz-transition: 0.5s ease-in-out;
@@ -473,7 +486,7 @@ You can choose between:
 }
 
 #navigator-toolbox:hover .tab-icon-image {
-  /* -webkit-filter: grayscale(0%);
+/* -webkit-filter: grayscale(0%);
   -webkit-transition: 0.5s ease-in-out;
   -moz-filter: grayscale(0%);
   -moz-transition: 0.5s ease-in-out;
@@ -494,13 +507,13 @@ You can choose between:
   opacity: 90%;
 }
 
-.tab-text:not([selected="true"]) {
+.tabbrowser-tab:not(:is([selected], [visuallyselected="true"])) .tab-text {
   color: darkgray !important;
   opacity: 50%;
   transition: all 0.2s;
 }
 
-#navigator-toolbox:hover tab-text {
+#navigator-toolbox:hover .tab-text {
   opacity: 80%;
 }
 
@@ -526,3 +539,85 @@ You can choose between:
   margin-bottom: 2px !important;
   width: 32px !important;
 }
+
+/* Firefox refresh overrides: keep the original theme across UI states.
+   Host-level variables also reach component internals through inheritance. */
+:root {
+  --toolbar-bgcolor: var(--base_color1) !important;
+  --toolbar-color: var(--outer_color3) !important;
+  --toolbar-field-background-color: var(--base_color2) !important;
+  --toolbar-field-color: var(--outer_color3) !important;
+  --toolbar-field-focus-background-color: var(--base_color2) !important;
+  --toolbar-field-focus-color: #fff !important;
+  --toolbar-field-border-color: transparent !important;
+  --toolbar-field-focus-border-color: var(--outer_color1) !important;
+  --sidebar-background-color: var(--base_color1) !important;
+  --sidebar-text-color: var(--outer_color3) !important;
+}
+
+#urlbar {
+  --toolbar-field-background-color: var(--base_color2) !important;
+  --toolbar-field-focus-background-color: var(--base_color2) !important;
+  --toolbar-field-color: var(--outer_color3) !important;
+  --toolbar-field-focus-color: #fff !important;
+}
+
+#urlbar > :is(#urlbar-background, .urlbar-background),
+#urlbar:is([open], [focused], :focus-within) > :is(#urlbar-background, .urlbar-background) {
+  background: var(--base_color2) !important;
+  border: none !important;
+  border-radius: 6px !important;
+  animation: none !important;
+}
+
+#urlbar :is(#urlbar-input, .urlbar-input) {
+  color: var(--outer_color3) !important;
+}
+
+#urlbar :is(#urlbar-input, .urlbar-input):focus {
+  color: #fff !important;
+}
+
+#urlbar .urlbarView {
+  color: var(--outer_color3) !important;
+}
+
+/* Remove new tab surface/shadow treatments while retaining attention states
+   such as multiselection and keyboard focus. */
+.tabbrowser-tab .tab-background {
+  border-radius: 3px !important;
+  background-image: none !important;
+  box-shadow: none !important;
+}
+
+.tabbrowser-tab:not(:is([selected], [visuallyselected="true"], [multiselected], :hover)) .tab-background {
+  background-color: transparent !important;
+}
+
+.tabbrowser-tab:hover:not(:is([selected], [visuallyselected="true"], [multiselected])) .tab-background {
+  background: var(--bgDark) !important;
+}
+
+.tabbrowser-tab:is([selected], [visuallyselected="true"]) .tab-background {
+  background: var(--base_color4) !important;
+}
+
+.tabbrowser-tab:is([selected], [visuallyselected="true"]) .tab-content {
+  color: var(--outer_color3) !important;
+}
+
+#sidebar-main,
+#sidebar-box {
+  --sidebar-background-color: var(--base_color1) !important;
+  --sidebar-text-color: var(--outer_color3) !important;
+  background-color: var(--base_color1) !important;
+  color: var(--outer_color3) !important;
+}
+
+/* Deliberately preserved from the original:
+   #urlbar[breakout] uses width:80%, left:60px, top:46px.
+   If only alignment is wrong, remove that rule and the following
+   #urlbar[breakout]:not([open]) bottom rule to restore native placement.
+   The .tabbrowser-tabs opacity rule was not changed to #tabbrowser-tabs:
+   doing that would unexpectedly hide all tabs on builds where it was inert.
+ */
