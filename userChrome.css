@@ -649,3 +649,8 @@ You can choose between:
 #urlbar #userContext-indicator {
   margin-inline: 0 !important;
 }
+
+/* Hide the coloured container indicator above tabs. */
+.tabbrowser-tab .tab-context-line {
+  display: none !important;
+}
