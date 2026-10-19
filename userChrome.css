@@ -161,6 +161,15 @@ tab[selected="true"] .tab-background {
   fill-opacity: 0.2 !important;
 }
 
+/* Keep the X steady only on the active, gradient tab. */
+.tabbrowser-tab:is([selected], [visuallyselected="true"]) .tab-close-button {
+  color: inherit !important;
+  fill: currentColor !important;
+  fill-opacity: 1 !important;
+  opacity: 0.9 !important;
+  transition: background-color 0.2s ease !important;
+}
+
 /*================== NEW TAB BUTTON ==================*/
 toolbar
   #tabs-newtab-button:not([disabled="true"]):not([checked]):not([open]):not(:active)
@@ -287,6 +296,7 @@ toolbar
 :is(#urlbar-input-container, .urlbar-input-container) {
   box-sizing: border-box !important;
   padding: 2px !important;
+  padding-inline-start: 5px !important;
   height: auto !important;
   min-height: 28px !important;
 }
@@ -320,6 +330,7 @@ toolbar
   height: auto !important;
   min-height: 28px !important;
   padding: 2px !important;
+  padding-inline-start: 5px !important;
 }
 
 /* Blank the placeholder text in the search bar */
@@ -496,7 +507,7 @@ You can choose between:
   filter: grayscale(0%); */
 }
 
-/* x on tab */
+/* Close and new-tab button hover opacity. */
 .tab-close-button,
 #tabs-newtab-button .toolbarbutton-icon {
   opacity: 50%;
@@ -631,6 +642,7 @@ You can choose between:
 #urlbar .urlbar-input-container {
   box-sizing: border-box !important;
   padding: 2px !important;
+  padding-inline-start: 5px !important;
   height: auto !important;
   min-height: 28px !important;
 }
