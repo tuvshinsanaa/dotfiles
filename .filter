@@ -62,7 +62,7 @@ youtube.com###related ytd-compact-video-renderer:has(#video-title:is([title*="Pa
 ! Mobile YT - Hide videos based on channel URLs
 m.youtube.com##ytm-media-item .media-channel a:not([class]):is([href="/@ChannelURL"], [href="/@AnotherChannelURL"]):upward(ytm-media-item)
 ! YT Home - No Videos
-! www.youtube.com##ytd-browse[page-subtype="home"]
+www.youtube.com##ytd-browse[page-subtype="home"]
 ! YT Home - Limit rows
 ! youtube.com##ytd-browse[page-subtype="home"] ytd-rich-grid-renderer>#contents>:is(ytd-rich-item-renderer[is-in-first-column]:first-child~[is-in-first-column]~[is-in-first-column],ytd-rich-item-renderer[is-in-first-column]:first-child~[is-in-first-column]~[is-in-first-column]~*)
 ! YT Videos - No Sidebar
@@ -118,4 +118,20 @@ reddit.com##rpl-horizontal-scroller[slot="recommendations"]
 ! Hide HLTV sections
 hltv.org##.right2Col
 hltv.org##.rightCol
+
+# Jira
+atlassian.net##[data-vc="atlassian-navigation-help"]
+atlassian.net##[data-testid="atlassian-navigation.ui.conversation-assistant.app-navigation-ai-mate"]
+atlassian.net##[data-testid="layout-controller.ui.bottom-right-corner.container.styled-container"]
+atlassian.net##[data-vc="share-button"]
+atlassian.net##[data-vc="automation-menu-button"]
+atlassian.net##[data-testid="feedback-button.horizontal-nav-feedback-button"]
+atlassian.net##[data-testid="platform.ui.fullscreen-button.fullscreen-button"]
+
+# Google Mail
+mail.google.com##[aria-label="Studio"]
+mail.google.com##[aria-label="Atlassian"]
+mail.google.com##[aria-label="Keep"]
+mail.google.com##[aria-label="Tasks"]
+mail.google.com##[jscontroller="DgIhze"]
 
