@@ -97,6 +97,9 @@ www.youtube.com##ytd-browse[page-subtype="home"] :is(ytd-rich-grid-row, #content
 ! YT Home - Hide Sections
 youtube.com##ytd-browse[page-subtype="home"] ytd-rich-section-renderer
 
+! YT Search - hide autocomplete suggestions
+youtube.com##yt-searchbox > [class*=ComponentSuggestion]
+
 ! Reddit
 reddit.com##.left-sidebar
 reddit.com##.legal-links
